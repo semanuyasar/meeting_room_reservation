@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20241209152755"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "startTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Duration"
+    }
+  ],
+  "name": "Reservation",
+  "relationships": [
+    {
+      "otherEntityName": "meetingRoom",
+      "relationshipName": "room",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "meetingRoom",
+      "relationshipName": "employee",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "owner",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithOwnerSide": true
+    }
+  ],
+  "searchEngine": "no"
+}

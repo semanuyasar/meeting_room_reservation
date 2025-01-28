@@ -1,0 +1,23 @@
+entity Employee {
+  department String
+}
+
+entity MeetingRoom {
+  name String
+  location String
+  capacity Integer
+}
+
+entity Reservation {
+  startTime LocalDate
+  endTime LocalDate
+  duration Integer
+}
+
+relationship ManyToOne {
+  Reservation{room} to MeetingRoom,
+}
+
+relationship ManyToMany {
+  Reservation{employee} to MeetingRoom
+}

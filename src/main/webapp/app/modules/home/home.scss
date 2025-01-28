@@ -1,0 +1,46 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+.hipster {
+  display: inline-block;
+  width: 100%;
+  height: 497px;
+  background: url('/content/images/jhipster_family_member_2.svg') no-repeat center top;
+  background-size: contain;
+}
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/content/images/slider-duzey01.png') no-repeat center center  ;
+  background-size: cover;
+  border : none;
+  padding : 0;
+  margin :0;
+}
+
+.home-header {
+  color: #00109b;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #00109b;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sign-in-button-container {
+  text-align: center;
+}
+

@@ -1,0 +1,23 @@
+{
+  "annotations": {
+    "changelogDate": "20241209152754"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "capacity",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "MeetingRoom",
+  "relationships": [],
+  "searchEngine": "no"
+}

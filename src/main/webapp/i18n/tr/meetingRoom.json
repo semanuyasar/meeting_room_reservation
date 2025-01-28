@@ -1,0 +1,27 @@
+{
+  "meetingroomreservationApp": {
+    "meetingRoom": {
+      "home": {
+        "title": "Meeting Rooms",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Meeting Room ekle",
+        "createOrEditLabel": "Yeni Meeting Room ekle veya guncelle",
+        "notFound": "Meeting Rooms kaydi bulunamadi"
+      },
+      "created": "{{ param }} ID ile bir Meeting Room eklendi",
+      "updated": "{{ param }} nolu Meeting Room guncellendi",
+      "deleted": "{{ param }} nolu Meeting Room silindi",
+      "delete": {
+        "question": "{{ id }} nolu Meeting Room silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Meeting Room"
+      },
+      "id": "ID",
+      "name": "Name",
+      "location": "Location",
+      "capacity": "Capacity",
+      "reservation": "Reservation"
+    }
+  }
+}
