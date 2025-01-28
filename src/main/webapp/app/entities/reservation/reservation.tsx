@@ -8,18 +8,23 @@ import { APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ASC, DESC } from 'app/shared/util/pagination.constants';
 import { overrideSortStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import { DurationFormat } from 'app/shared/DurationFormat';
 
 import { getEntities } from './reservation.reducer';
 
-export const Reservation = () => {
-  const dispatch = useAppDispatch();
+interface Reservation {
+  id: number;
+  startTime: string;
+  endTime: string;
+  room: { id: number };
+  employees: { id: number }[];
+}
 
+export const Reservation: React.FC = () => {
+  const dispatch = useAppDispatch();
   const pageLocation = useLocation();
   const navigate = useNavigate();
 
-  const [sortState, setSortState] = useState(overrideSortStateWithQueryParams(getSortState(pageLocation, 'id'), pageLocation.search));
-
+  const [sortState, setSortState] = useState(getSortState(pageLocation, 'id'));
   const reservationList = useAppSelector(state => state.reservation.entities);
   const loading = useAppSelector(state => state.reservation.loading);
 
@@ -43,7 +48,7 @@ export const Reservation = () => {
     sortEntities();
   }, [sortState.order, sortState.sort]);
 
-  const sort = p => () => {
+  const sort = (p: string) => () => {
     setSortState({
       ...sortState,
       order: sortState.order === ASC ? DESC : ASC,
@@ -55,13 +60,23 @@ export const Reservation = () => {
     sortEntities();
   };
 
-  const getSortIconByFieldName = (fieldName: string) => {
+  const getSortIconByFieldName = (fieldName: string): any => {
     const sortFieldName = sortState.sort;
     const order = sortState.order;
     if (sortFieldName !== fieldName) {
       return faSort;
     }
     return order === ASC ? faSortUp : faSortDown;
+  };
+
+  const calculateDuration = (start: string, end: string): number => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    if (startDate > endDate) return 0;
+
+    const diffMs = endDate.getTime() - startDate.getTime();
+    return Math.floor(diffMs / 60000); // Convert milliseconds to minutes
   };
 
   return (
@@ -97,9 +112,8 @@ export const Reservation = () => {
                   <Translate contentKey="meetingroomreservationApp.reservation.endTime">End Time</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('endTime')} />
                 </th>
-                <th className="hand" onClick={sort('duration')}>
-                  <Translate contentKey="meetingroomreservationApp.reservation.duration">Duration</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('duration')} />
+                <th>
+                  <Translate contentKey="meetingroomreservationApp.reservation.duration">Duration (minutes)</Translate>
                 </th>
                 <th>
                   <Translate contentKey="meetingroomreservationApp.reservation.room">Room</Translate> <FontAwesomeIcon icon="sort" />
@@ -107,9 +121,6 @@ export const Reservation = () => {
                 <th>
                   <Translate contentKey="meetingroomreservationApp.reservation.employee">Employee</Translate>{' '}
                   <FontAwesomeIcon icon="sort" />
-                </th>
-                <th>
-                  <Translate contentKey="meetingroomreservationApp.reservation.owner">Owner</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -128,7 +139,7 @@ export const Reservation = () => {
                   <td>
                     {reservation.endTime ? <TextFormat type="date" value={reservation.endTime} format={APP_LOCAL_DATE_FORMAT} /> : null}
                   </td>
-                  <td>{reservation.duration ? <DurationFormat value={reservation.duration} /> : null}</td>
+                  <td>{calculateDuration(reservation.startTime, reservation.endTime)}</td>
                   <td>{reservation.room ? <Link to={`/meeting-room/${reservation.room.id}`}>{reservation.room.id}</Link> : ''}</td>
                   <td>
                     {reservation.employees

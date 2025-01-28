@@ -4,26 +4,26 @@
       "home": {
         "title": "Reservations",
         "refreshListLabel": "Listeyi yenile",
-        "createLabel": "Yeni Reservation ekle",
-        "createOrEditLabel": "Yeni Reservation ekle veya guncelle",
-        "notFound": "Reservations kaydi bulunamadi"
+        "createLabel": "Yeni Rezervasyon Ekle",
+        "createOrEditLabel": "Yeni rezervasyon ekle veya güncelle",
+        "notFound": "Rezervasyon kaydı bulunamadı"
       },
-      "created": "{{ param }} ID ile bir Reservation eklendi",
-      "updated": "{{ param }} nolu Reservation guncellendi",
-      "deleted": "{{ param }} nolu Reservation silindi",
+      "created": "{{ param }} ID ile bir rezervasyon eklendi",
+      "updated": "{{ param }} nolu rezervasyon güncellendi",
+      "deleted": "{{ param }} nolu rezervasyon silindi",
       "delete": {
-        "question": "{{ id }} nolu Reservation silinecek. Devem etmek istiyor musunuz?"
+        "question": "{{ id }} kodlu rezervasyon silinecek. Devam etmek istiyor musunuz?"
       },
       "detail": {
-        "title": "Reservation"
+        "title": "Rezervasyon"
       },
       "id": "ID",
-      "startTime": "Start Time",
-      "endTime": "End Time",
-      "duration": "Duration",
-      "room": "Room",
-      "employee": "Employee",
-      "owner": "Owner"
+      "startTime": "Rezervasyon Başlangıcı",
+      "endTime": "Rezervasyon Bitişi",
+      "duration": "Süre",
+      "room": "Toplantı Odası",
+      "employee": "Çalışanlar",
+      "owner": "Rezervasyon Sahibi"
     }
   }
 }
